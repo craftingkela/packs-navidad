@@ -1,0 +1,25 @@
+.comprobar {
+  text-align: center;
+  padding: 2rem;
+}
+
+.resumen {
+  margin: 1rem auto;
+  max-width: 500px;
+  text-align: left;
+}
+
+.mini-img {
+  width: 100px;
+  height: 80px;
+  object-fit: cover;
+  border-radius: 5px;
+  margin-bottom: 1rem;
+}
+
+.actions {
+  margin-top: 2rem;
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+}

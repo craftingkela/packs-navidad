@@ -1,0 +1,31 @@
+<section class="telas">
+  <h2>Telas</h2>
+  <p>Elige una tela para el exterior y una para el forro.</p>
+
+  <div class="telas-grid">
+    <div class="tela-card" *ngFor="let tela of telas">
+      <img [src]="tela.imagen" [alt]="tela.nombre" />
+      <p>{{ tela.nombre }}</p>
+
+      <div class="botones">
+        <button [class.activo]="telaExterior === tela" (click)="seleccionarTela('exterior', tela)">
+          Exterior
+        </button>
+
+        <button [class.activo]="telaForro === tela" (click)="seleccionarTela('forro', tela)">
+          Forro
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <div class="actions">
+    <button (click)="volver()">Volver</button>
+    <button [disabled]="!puedeContinuar" (click)="siguiente()" [class.disabled]="!puedeContinuar">
+      Siguiente
+    </button>
+  </div>
+
+
+  <app-progress-bar [currentStep]="2"></app-progress-bar>
+</section>

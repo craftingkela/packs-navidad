@@ -1,0 +1,25 @@
+<section class="productos">
+  <h2>PRODUCTOS</h2>
+  <p>Elige el pack que más se adapte a ti.</p>
+
+  <div class="productos-container">
+    <div class="producto-card" *ngFor="let pack of packs" [class.seleccionado]="packSeleccionado === pack"
+      (click)="seleccionarPack(pack)">
+      <img [src]="pack.imagen" [alt]="pack.nombre" class="producto-imagen">
+      <div class="producto-info">
+        <h3>{{ pack.nombre }}</h3>
+        <p>{{ pack.descripcion }}</p>
+        <span class="precio">{{ pack.precio }} €</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="actions">
+    <button (click)="volver()">Volver</button>
+    <button (click)="siguiente()" [disabled]="!packSeleccionado">
+      Siguiente
+    </button>
+  </div>
+
+  <app-progress-bar [currentStep]="1"></app-progress-bar>
+</section>

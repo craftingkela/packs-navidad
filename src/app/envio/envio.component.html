@@ -1,0 +1,32 @@
+<section class="envio">
+
+  <h2>Datos de envío</h2>
+  <p>Introduce la información de envío.</p>
+  <div class="tipos-envio">
+    <div class="form-check">
+      <input class="form-check-input" type="radio" name="radioDefault" id="radioDefault1">
+      <label class="form-check-label" for="radioDefault1">
+        Entrega en mano
+      </label>
+    </div>
+    <div class="form-check">
+      <input class="form-check-input" type="radio" name="radioDefault" id="radioDefault2">
+      <label class="form-check-label" for="radioDefault2">
+        Envío or correos certificado
+      </label>
+    </div>
+    <div class="form-check">
+      <input class="form-check-input" type="radio" name="radioDefault" id="radioDefault3">
+      <label class="form-check-label" for="radioDefault3">
+        Plataformas de venta
+      </label>
+    </div>
+
+  </div>
+
+  <div class="actions">
+    <button (click)="volver()">Volver</button>
+    <button (click)="siguiente()">Siguiente</button>
+  </div>
+  <app-progress-bar [currentStep]="3"></app-progress-bar>
+</section>

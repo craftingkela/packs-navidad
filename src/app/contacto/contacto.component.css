@@ -1,0 +1,76 @@
+form,
+.opciones-envio,
+.subform {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  max-width: 400px;
+  margin: 10px auto;
+}
+
+label {
+  display: flex;
+  flex-direction: column;
+  font-size: 0.9rem;
+}
+
+input[type="text"],
+textarea {
+  padding: 6px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+}
+
+.opciones-envio {
+  gap: 8px;
+}
+
+.subform {
+  background: #f8f8f8;
+  padding: 15px;
+  border-radius: 8px;
+}
+
+.botones {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  margin-top: 20px;
+}
+
+button {
+  padding: 8px 16px;
+  border: none;
+  border-radius: 6px;
+  background-color: #ff4f4f;
+  color: white;
+  cursor: pointer;
+  font-weight: 500;
+}
+
+button:hover {
+  background-color: #e04040;
+}
+
+input.error,
+textarea.error {
+  border: 2px solid red;
+}
+
+input.error,
+textarea.error {
+  border: 2px solid red;
+}
+
+.error-text {
+  color: red;
+  font-size: 0.9em;
+  margin-top: 2px;
+  margin-bottom: 5px;
+}
+
+.opciones-envio.error {
+  border: 2px solid red;
+  padding: 5px;
+  margin-bottom: 5px;
+}

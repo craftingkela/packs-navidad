@@ -1,0 +1,13 @@
+<app-header></app-header>
+<div>
+  <main class="app-main">
+    <!-- Mostrar la barra solo en las páginas intermedias -->
+    <ng-container *ngIf="mostrarBarraProgreso()">
+
+    </ng-container>
+
+    <router-outlet></router-outlet>
+  </main>
+</div>
+<br>
+<app-footer></app-footer>
