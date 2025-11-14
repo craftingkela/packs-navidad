@@ -1,6 +1,21 @@
-<section class="recibido">
-  <h2>¡Pedido recibido!</h2>
-  <p>Gracias por tu compra. Te contactaremos pronto.</p>
+<div class="popup-backdrop" *ngIf="mostrarPopup">
+  <div class="popup-card">
 
-  <button (click)="volverAlInicio()">Volver al inicio</button>
-</section>
+    <h2>¡Recibido! 🎉</h2>
+
+    <p class="mensaje-principal">
+      Tu pedido ya está procesándose.
+      En las próximas <strong>24-48 horas</strong> recibirás un correo o mensaje confirmando la preparación.
+      El precio total se te mostrará una vez esté aceptado todo.
+    </p>
+
+    <p class="mensaje-secundario">
+      Disculpa si tardo o no puedo darte una confirmación directamente desde este formulario, pero la misma que programa
+      esto es la que responde los correos, compra el material, cose y empaqueta vuestros pedidos.
+      ¡Muchas gracias por tu colaboración, un besico &lt;3!
+    </p>
+
+    <button class="btn-cerrar" (click)="cerrarPopup()">Cerrar</button>
+  </div>
+</div>
+<p *ngIf="!mostrarPopup">Pedido confirmado y correo enviado</p>

@@ -1,0 +1,307 @@
+/* Contenedor principal */
+.envio {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 15px;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+  position: relative;
+}
+
+/* Botón cerrar */
+.btn-close {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  background: transparent;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: #333;
+  font-weight: bold;
+  z-index: 10;
+}
+
+/* Título y descripción */
+.envio h2 {
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: #333;
+  text-align: center;
+  margin-bottom: 8px;
+}
+
+.envio>p {
+  font-size: 0.9rem;
+  color: #666;
+  text-align: center;
+  margin-bottom: 15px;
+}
+
+/* Error global */
+.error-global {
+  background: #fff5f5;
+  color: #ff4f4f;
+  padding: 10px;
+  border-radius: 8px;
+  text-align: center;
+  font-size: 0.85rem;
+  font-weight: 600;
+  margin-bottom: 15px;
+}
+
+/* Grid de opciones de envío */
+.opciones-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  margin-bottom: 15px;
+}
+
+/* Ocultar radio real */
+.opciones-grid input[type="radio"],
+.plataformas-grid input[type="radio"] {
+  display: none;
+}
+
+/* Card de opción */
+.opcion-card {
+  background: #fafafa;
+  border: 2px solid #e5e5e5;
+  border-radius: 10px;
+  padding: 12px;
+  cursor: pointer;
+  transition: all 0.2s;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.opcion-card:hover {
+  border-color: #333;
+  transform: translateY(-1px);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Opción seleccionada */
+.opciones-grid input[type="radio"]:checked+.opcion-contenido,
+.opcion-card:has(input[type="radio"]:checked) {
+  border-color: #333;
+  background: #333;
+  color: white;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.opcion-card:has(input[type="radio"]:checked) .opcion-titulo {
+  color: white;
+}
+
+.opcion-card:has(input[type="radio"]:checked) .opcion-info {
+  color: rgba(255, 255, 255, 0.8);
+}
+
+/* Error en opciones */
+.opciones-grid.error .opcion-card {
+  border-color: #ff4f4f;
+}
+
+/* Contenido de la opción */
+.opcion-contenido {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.opcion-titulo {
+  font-weight: 600;
+  font-size: 0.85rem;
+  color: #333;
+}
+
+.opcion-info {
+  font-size: 0.75rem;
+  color: #777;
+}
+
+/* Formulario de detalles */
+.detalle-form {
+  background: #fafafa;
+  border: 2px solid #e5e5e5;
+  border-radius: 10px;
+  padding: 15px;
+  margin-bottom: 15px;
+  animation: fadeInUp 0.3s ease-out;
+}
+
+.detalle-form h3 {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #333;
+  margin: 0 0 12px 0;
+}
+
+/* Campos de formulario */
+.form-field {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 12px;
+}
+
+.field-label {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #444;
+  margin-bottom: 6px;
+}
+
+.form-field input[type="text"] {
+  padding: 10px;
+  border: 2px solid #e0e0e0;
+  border-radius: 8px;
+  background: white;
+  font-size: 0.85rem;
+  transition: all 0.2s;
+}
+
+.form-field input[type="text"]:focus {
+  border-color: #333;
+  outline: none;
+}
+
+.form-field input[type="text"].error {
+  border-color: #ff4f4f;
+  background: #fff5f5;
+}
+
+/* Grid de plataformas */
+.plataformas-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+}
+
+.plataforma-card {
+  background: white;
+  border: 2px solid #e0e0e0;
+  border-radius: 8px;
+  padding: 12px;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.2s;
+  font-weight: 600;
+  font-size: 0.85rem;
+  color: #666;
+}
+
+.plataforma-card:hover {
+  border-color: #333;
+  background: #f5f5f5;
+  color: #333;
+}
+
+.plataforma-card:has(input[type="radio"]:checked) {
+  background: #333;
+  border-color: #333;
+  color: white;
+}
+
+/* Error en plataformas */
+.plataformas-grid.error .plataforma-card {
+  border-color: #ff4f4f;
+}
+
+/* Botones de navegación */
+.actions {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 15px;
+}
+
+.actions button {
+  padding: 8px 16px;
+  border: none;
+  border-radius: 6px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.actions button[type="button"] {
+  background: #f0f0f0;
+  color: #555;
+}
+
+.actions button[type="button"]:hover {
+  background: #e0e0e0;
+}
+
+.actions button[type="submit"] {
+  background: #333;
+  color: white;
+}
+
+.actions button[type="submit"]:hover {
+  background: #000;
+  transform: translateY(-1px);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+.actions button:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+  background: #e0e0e0;
+  color: #999;
+}
+
+/* Progress bar */
+app-progress-bar {
+  display: block;
+  margin-bottom: 8px;
+}
+
+/* Animación de entrada */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(5px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+
+  .opciones-grid,
+  .plataformas-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .envio {
+    padding: 15px 10px;
+    margin: 10px;
+  }
+}
+
+@media (max-width: 480px) {
+  .envio h2 {
+    font-size: 1.1rem;
+  }
+
+  .envio>p {
+    font-size: 0.8rem;
+  }
+
+  .form-field input[type="text"] {
+    font-size: 16px;
+    /* evita zoom en móviles */
+  }
+}

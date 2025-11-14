@@ -1,3 +1,21 @@
-.app-main {
-  background: linear-gradient(to bottom, #f7cea6, #dbd7bd);
+/* Eliminar espacios del router-outlet */
+router-outlet {
+  display: none;
+}
+
+router-outlet+* {
+  display: block;
+}
+
+/* Asegurar que el contenedor de la app no tenga márgenes */
+app-root {
+  display: block;
+  margin: 0;
+  padding: 0;
+}
+
+/* Si tienes un contenedor main */
+main {
+  margin: 0;
+  padding: 0;
 }

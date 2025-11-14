@@ -16,38 +16,77 @@ export class ProductosComponent {
   packs = [
     {
       nombre: 'Pack Bookworm',
-      descripcion: 'Una funda para libros con cierre de botón. Un marcapáginas y portabolis a juego',
+      descripcion: [
+        'Funda para libros con cierre de lazo o botón',
+        'Un marcapáginas',
+        'Portabolis a juego'
+      ],
       precio: 20,
-      imagen: 'assets/packs/basico.jpg'
+      imagen: 'assets/1.png',
+      opciones: [
+        { nombre: 'Funda de botón', imagen: 'assets/2.png' },
+        { nombre: 'Funda de lazo', imagen: 'assets/3.png' }
+      ]
     },
     {
       nombre: 'Pack Beauty',
-      descripcion: 'Neceser cuadrado, bolsa para guardar brochas y coletero a juego.',
+      descripcion: [
+        'Neceser cuadrado',
+        'Bolsa para guardar brochas',
+        'Coletero o portacacao'
+      ],
       precio: 20,
-      imagen: 'assets/packs/deluxe.jpg'
+      imagen: 'assets/2.png',
+      opciones: [
+        { nombre: 'Coletero', imagen: 'assets/1.png' },
+        { nombre: 'Portacacao', imagen: 'assets/1.png' }
+      ]
     },
     {
       nombre: 'Pack Shopper',
-      descripcion: 'Tote bag para tus compras, un monedero y un llavero a juego.',
+      descripcion: [
+        'Tote bag para tus compras',
+        'Monedero',
+        'Llavero o portacacao'
+      ],
       precio: 20,
-      imagen: 'assets/packs/premium.jpg'
+      imagen: 'assets/3.png',
+      opciones: [
+        { nombre: 'Llavero', imagen: 'assets/3.png' },
+        { nombre: 'Portacacao', imagen: 'assets/2.png' }
+      ]
     }
   ];
 
   packSeleccionado: any = null;
+  opcionSeleccionada: any = null;
+
 
   constructor(private router: Router, private pedidoService: PedidoService) { }
 
   seleccionarPack(pack: any) {
     this.packSeleccionado = pack;
+    this.opcionSeleccionada = null; // Resetear opción al cambiar de pack
     this.pedidoService.setPack(pack); // ✅ Guardamos el pack seleccionado
   }
+
+  seleccionarOpcion(opcion: any) {
+    this.opcionSeleccionada = opcion;
+    console.log('Opción seleccionada:', opcion.nombre);
+    this.pedidoService.setOpcion(opcion); // Guardamos opción seleccionada
+  }
+
+
+  volverAlInicio() {
+    this.router.navigate(['/']); // te lleva a la página principal
+  }
+
   volver() {
     this.router.navigate(['']); // o la ruta anterior
   }
 
   siguiente() {
-    if (this.packSeleccionado) {
+    if (this.packSeleccionado && this.opcionSeleccionada) {
       this.router.navigate(['/telas']);
     }
   }

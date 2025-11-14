@@ -10,5 +10,5 @@ import { CommonModule } from '@angular/common';
 })
 export class ProgressBarComponent {
   @Input() currentStep = 1;
-  steps = [1, 2, 3, 4];
+  steps = [1, 2, 3, 4, 5];
 }

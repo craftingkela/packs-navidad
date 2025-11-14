@@ -1,49 +1,72 @@
 <section class="comprobar">
-  <h2>Revisa tu pedido</h2>
+  <app-progress-bar [currentStep]="5"></app-progress-bar>
+
+  <button type="button" class="btn-close" aria-label="Close" (click)="volverAlInicio()"></button>
+
+  <h4>Revisa tu pedido</h4>
 
   <div class="resumen">
-    <h3>Pack seleccionado:</h3>
-    <p *ngIf="pack">{{ pack.nombre }}</p>
+    <!-- Pack seleccionado -->
+
+    <div class="pack-linea" *ngIf="pack">
+      <span class="pack-nombre">{{ pack.nombre }}</span>
+      <span class="pack-opcion">{{ opcion?.nombre }}</span>
+    </div>
     <p *ngIf="!pack">No se ha seleccionado ningún pack.</p>
 
-    <h3>Telas seleccionadas:</h3>
-    <div *ngIf="telas">
-      <p>Exterior: {{ telas.exterior?.nombre }}</p>
-      <img *ngIf="telas.exterior?.imagen" [src]="telas.exterior.imagen" alt="Tela exterior" class="mini-img">
+    <!-- Telas seleccionadas -->
 
-      <p>Forro: {{ telas.forro?.nombre }}</p>
-      <img *ngIf="telas.forro?.imagen" [src]="telas.forro.imagen" alt="Tela forro" class="mini-img">
+    <div class="telas-grid" *ngIf="telas">
+      <!-- Tela principal -->
+      <div class="tela-item">
+        <p class="telastittle">Tela principal</p>
+        <div class="img-container">
+          <img *ngIf="telas.exterior?.imagen" [src]="telas.exterior.imagen" alt="Tela exterior">
+        </div>
+        <p class="tela-nombre">{{ telas.exterior?.nombre }}</p>
+      </div>
+
+      <!-- Tela forro -->
+      <div class="tela-item">
+        <p class="telastittle">Forro</p>
+        <div class="img-container">
+          <img *ngIf="telas.forro?.imagen" [src]="telas.forro.imagen" alt="Tela forro">
+        </div>
+        <p class="tela-nombre">{{ telas.forro?.nombre }}</p>
+      </div>
     </div>
     <p *ngIf="!telas">No se han seleccionado telas.</p>
+
+    <!-- Datos de contacto -->
+
+    <div *ngIf="contacto">
+      <p><strong>Nombre:</strong> {{ contacto.nombre }} {{ contacto.apellido }}</p>
+      <p><strong>Correo:</strong> {{ contacto.correo }}</p>
+      <p *ngIf="contacto.telefono">Teléfono: {{ contacto.telefono }}</p>
+
+      <h3>Método de envío: {{ envio.metodoEnvio}}</h3>
+
+      <div *ngIf="envio?.metodoEnvio === 'mano'">
+        Ciudad de entrega: {{ envio?.ciudadEntrega }}
+      </div>
+
+      <div *ngIf="envio?.metodoEnvio === 'correos'">
+        Dirección: {{ envio?.direccion.calle }},
+        {{ envio?.direccion.numero }},
+        {{ envio?.direccion.puerta }},
+        {{ envio?.direccion.cp }},
+        {{ envio?.direccion.ciudad }}
+      </div>
+
+      <div *ngIf="envio?.metodoEnvio === 'plataforma'">
+        Aplicación: {{ envio?.plataforma }}
+      </div>
+    </div>
+
+    <!-- Botones de acción -->
+    <div class="actions">
+      <button (click)="volver()">Volver</button>
+      <button (click)="confirmar()">Confirmar pedido</button>
+    </div>
   </div>
-  <h3>Datos de contacto</h3>
-  <div *ngIf="contacto">
-    <p>Nombre: {{ contacto.nombre }} {{ contacto.apellido }}</p>
-
-    <p>Correo: {{ contacto.correo }}</p>
-    <p>teléfono: {{ contacto.telefono }}</p>
-
-    <h3>Método de envío:</h3>
-    <p *ngIf="contacto.metodoEnvio === 'mano'">
-      Entrega en mano - Ciudad: {{ contacto.ciudadEntrega }}<br />
-      Anotaciones: {{ contacto.anotaciones }}
-    </p>
-
-    <p *ngIf="contacto.metodoEnvio === 'correos'">
-      Entrega por Correos - Dirección: {{ contacto.direccion.calle }}, {{ contacto.direccion.numero }},
-      {{ contacto.direccion.puerta }}, {{ contacto.direccion.cp }}, {{ contacto.direccion.ciudad }}
-    </p>
-
-    <p *ngIf="contacto.metodoEnvio === 'plataforma'">
-      Entrega por plataforma: {{ contacto.plataforma }}
-    </p>
-  </div>
-
-
-  <div class="actions">
-    <button (click)="volver()">Volver</button>
-    <button (click)="confirmar()">Confirmar pedido</button>
-  </div>
-
-  <app-progress-bar [currentStep]="3"></app-progress-bar>
 </section>

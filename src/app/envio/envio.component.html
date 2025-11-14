@@ -1,0 +1,107 @@
+<section class="envio">
+  <app-progress-bar [currentStep]="4"></app-progress-bar>
+
+  <button type="button" class="btn-close" aria-label="Close" (click)="volverAlInicio()">&times;</button>
+
+  <h2>Método de envío</h2>
+  <p>Selecciona cómo quieres recibir tu pedido.</p>
+
+  <form #envioForm="ngForm" (ngSubmit)="siguiente(envioForm)">
+
+    <div class="error-global" *ngIf="mostrarErrores && envioForm.invalid">
+      Rellena los campos obligatorios para continuar
+    </div>
+
+    <!-- Opciones de envío -->
+    <div class="opciones-grid" [class.error]="!metodoEnvio && mostrarErrores">
+      <label class="opcion-card">
+        <input type="radio" name="envio" value="mano" [(ngModel)]="metodoEnvio" />
+        <div class="opcion-contenido">
+          <span class="opcion-titulo">Entrega en mano</span>
+          <span class="opcion-info">Zona corredor del Henares</span>
+        </div>
+      </label>
+
+      <label class="opcion-card">
+        <input type="radio" name="envio" value="correos" [(ngModel)]="metodoEnvio" />
+        <div class="opcion-contenido">
+          <span class="opcion-titulo">Correos certificado</span>
+          <span class="opcion-info">Precio de envío 5€</span>
+        </div>
+      </label>
+
+      <label class="opcion-card">
+        <input type="radio" name="envio" value="plataforma" [(ngModel)]="metodoEnvio" />
+        <div class="opcion-contenido">
+          <span class="opcion-titulo">Plataforma de venta</span>
+          <span class="opcion-info">Precio variable</span>
+        </div>
+      </label>
+    </div>
+
+    <!-- Formulario: Entrega en mano -->
+    <div *ngIf="metodoEnvio === 'mano'" class="detalle-form">
+      <h3>Datos de entrega</h3>
+      <label class="form-field">
+        <span class="field-label">Ciudad*</span>
+        <input type="text" [(ngModel)]="ciudadEntrega" name="ciudadEntrega" #ciudadEntregaInput="ngModel" required
+          [class.error]="ciudadEntregaInput.invalid && mostrarErrores" placeholder="Introduce la ciudad" />
+      </label>
+    </div>
+
+    <!-- Formulario: Correos -->
+    <div *ngIf="metodoEnvio === 'correos'" class="detalle-form">
+      <h3>Dirección de envío</h3>
+      <label class="form-field">
+        <span class="field-label">Calle y número*</span>
+        <input type="text" [(ngModel)]="direccion.calle" name="calle" required
+          [class.error]="mostrarErrores && !direccion.calle" placeholder="Nombre de la calle" />
+      </label>
+      <label class="form-field">
+        <span class="field-label">Puerta</span>
+        <input type="text" [(ngModel)]="direccion.numero" name="numero"
+          [class.error]="mostrarErrores && !direccion.numero" placeholder="Si procede" />
+      </label>
+      <label class="form-field">
+        <span class="field-label">Código postal*</span>
+        <input type="text" [(ngModel)]="direccion.cp" name="cp" required [class.error]="mostrarErrores && !direccion.cp"
+          placeholder="CP" />
+      </label>
+      <label class="form-field">
+        <span class="field-label">Población*</span>
+        <input type="text" [(ngModel)]="direccion.ciudad" name="dirciudad" required
+          [class.error]="mostrarErrores && !direccion.ciudad" placeholder="Población" />
+      </label>
+      <label class="form-field">
+        <span class="field-label">Provincia*</span>
+        <input type="text" [(ngModel)]="direccion.ciudad" name="dirciudad" required
+          [class.error]="mostrarErrores && !direccion.ciudad" placeholder="Provincia" />
+      </label>
+    </div>
+
+    <!-- Formulario: Plataforma -->
+    <div *ngIf="metodoEnvio === 'plataforma'" class="detalle-form">
+      <h3>Selecciona la plataforma</h3>
+      <div class="plataformas-grid" [class.error]="!plataforma && mostrarErrores">
+        <label class="plataforma-card">
+          <input type="radio" name="plataforma" value="wallapop" [(ngModel)]="plataforma" />
+          <span>Wallapop</span>
+        </label>
+        <label class="plataforma-card">
+          <input type="radio" name="plataforma" value="vinted" [(ngModel)]="plataforma" />
+          <span>Vinted</span>
+        </label>
+        <label class="plataforma-card">
+          <input type="radio" name="plataforma" value="etsy" [(ngModel)]="plataforma" />
+          <span>Etsy</span>
+        </label>
+      </div>
+    </div>
+
+    <!-- Botones de navegación -->
+    <div class="actions">
+      <button type="button" (click)="atras()">Atrás</button>
+      <button type="submit">Siguiente</button>
+    </div>
+  </form>
+</section>

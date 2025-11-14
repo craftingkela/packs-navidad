@@ -1,4 +1,8 @@
 <section class="telas">
+  <app-progress-bar [currentStep]="2"></app-progress-bar>
+
+  <button type="button" class="btn-close" aria-label="Close" (click)="volverAlInicio()">&times;</button>
+
   <h2>Telas</h2>
   <p>Elige una tela para el exterior y una para el forro.</p>
 
@@ -21,11 +25,6 @@
 
   <div class="actions">
     <button (click)="volver()">Volver</button>
-    <button [disabled]="!puedeContinuar" (click)="siguiente()" [class.disabled]="!puedeContinuar">
-      Siguiente
-    </button>
+    <button [disabled]="!puedeContinuar" (click)="siguiente()" [class.disabled]="!puedeContinuar">Siguiente</button>
   </div>
-
-
-  <app-progress-bar [currentStep]="2"></app-progress-bar>
 </section>

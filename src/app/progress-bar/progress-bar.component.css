@@ -2,14 +2,14 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  margin: 20px auto;
-  gap: 12px;
+  margin: 10px auto;
+  gap: 5px;
   /* separación entre puntos */
 }
 
 .progress-step {
-  width: 16px;
-  height: 16px;
+  width: 10px;
+  height: 10px;
   border-radius: 50%;
   background-color: #ccc;
   transition: background-color 0.3s ease;

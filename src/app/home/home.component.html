@@ -1,28 +1,37 @@
-<section class="home-hero">
+<section class="home">
 
-  <!-- Fondo decorativo con copos -->
-  <div class="snowflakes" aria-hidden="true">
-    <div class="snowflake">❄</div>
-    <div class="snowflake">❄</div>
-    <div class="snowflake">❄</div>
-    <div class="snowflake">❄</div>
-    <div class="snowflake">❄</div>
-    <div class="snowflake">❄</div>
+  <!-- Título y subtítulo -->
+  <div class="home-header">
+    <h1>Packs de Navidad</h1>
+    <p class="subtitle">Regalos únicos y personalizados para esta temporada</p>
   </div>
 
-  <!-- Texto principal -->
-  <div class="hero-text">
-    <h1>Acierta con tus regalos de Navidad</h1>
-    <p>Descubre packs únicos y personalizados que encantarán a tus seres queridos.</p>
-    <p>Esta NO es unapágina de compra. Su finalidad es facilitar el encargo de los productos y poder contactar con
-      todos. <br> Si tienes cualquier duda puedes contactarme por mis Redes sociales craftingkela o mandarme un correo a
-      crafting.kela. </p>
-    <button (click)="irAPacks()">Elige tu próximo regalo</button>
+
+
+  <!-- Texto explicativo -->
+  <div class="info-box">
+    <p class="info-text">
+      Esta <strong>NO es una página de compra</strong>. Su finalidad es facilitar el encargo de los productos y poder
+      contactar con todos.
+    </p>
+    <p class="info-text">
+      Si tienes cualquier duda puedes hablarme a mis redes sociales
+      <a href="https://www.tiktok.com/@craftingkela" target="_blank" rel="noopener noreferrer">craftingkela</a>
+      o mandarme un <a href="mailto:crafting.kela@gmail.com">correo</a>.
+    </p>
   </div>
 
-  <!-- Imagen decorativa / banner -->
-  <div class="hero-image">
-    <img src="assets/tu-imagen.png" alt="Packs de Navidad" />
+  <!-- Botón CTA -->
+  <div class="cta-container">
+    <button class="btn-cta" (click)="irAPacks()">Elige tu próximo regalo</button>
+  </div>
+
+  <!-- Galería de imágenes -->
+  <div class="images-grid">
+    <div class="image-card">
+      <img src="assets/1.png" alt="Pack navideño 1" />
+    </div>
+
   </div>
 
 </section>

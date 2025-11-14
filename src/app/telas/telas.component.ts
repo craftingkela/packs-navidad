@@ -13,14 +13,14 @@ import { PedidoService } from '../services/pedido.service';
 })
 export class TelasComponent implements OnInit {
   telas = [
-    { nombre: 'Bruma roja', imagen: 'assets/rojo.jpg' },
-    { nombre: 'Verde musgo', imagen: 'assets/verde.jpg' },
-    { nombre: 'Blanco nieve', imagen: 'assets/blanco.jpg' },
-    { nombre: 'Flores azules', imagen: 'assets/azul.jpg' },
-    { nombre: 'Vichy amarillo', imagen: 'assets/amarillo.jpg' },
-    { nombre: 'Gris Saeris', imagen: 'assets/gris.jpg' },
-    { nombre: 'Vichy lila', imagen: 'assets/lila.jpg' },
-    { nombre: 'Rosa con lunares', imagen: 'assets/rosa.jpg' }
+    { nombre: 'Bruma roja', imagen: 'assets/rojo.png' },
+    { nombre: 'Verde musgo', imagen: 'assets/verde.png' },
+    { nombre: 'Blanco nieve', imagen: 'assets/blanco.png' },
+    { nombre: 'Flores azules', imagen: 'assets/azul.png' },
+    { nombre: 'Vichy amarillo', imagen: 'assets/amarillo.png' },
+    { nombre: 'Gris Saeris', imagen: 'assets/gris.png' },
+    { nombre: 'Vichy lila', imagen: 'assets/lila.png' },
+    { nombre: 'Rosa con lunares', imagen: 'assets/rosa.png' }
   ];
   telaExterior: any = null;
   telaForro: any = null;
@@ -57,6 +57,10 @@ export class TelasComponent implements OnInit {
         forro: this.telaForro
       });
     }
+  }
+
+  volverAlInicio() {
+    this.router.navigate(['/']); // te lleva a la página principal
   }
 
 

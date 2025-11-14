@@ -1,250 +1,190 @@
-/* Container principal */
+/* === CONTENEDOR PRINCIPAL === */
 .formulario-contacto {
-  max-width: 600px;
-
-  padding: 40px;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 15px;
   background: white;
   border-radius: 12px;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+  position: relative;
 }
 
-/* Títulos */
-h2 {
-  font-size: 1rem;
+/* Botón cerrar */
+.btn-close {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  background: transparent;
+  border: none;
+  font-size: 1.5rem;
+  font-weight: bold;
+  cursor: pointer;
+  color: #333;
+  z-index: 10;
+}
+
+/* Progress bar */
+app-progress-bar {
+  display: block;
+  margin-bottom: 8px;
+}
+
+/* === TÍTULO === */
+.formulario-contacto h3 {
+  font-size: 1.3rem;
   font-weight: 600;
   color: #333;
-  margin: 20px 0 15px 0;
+  text-align: center;
+  margin-bottom: 15px;
 }
 
-/* Separador */
-hr {
-  border: none;
-  border-top: 1px solid #e5e5e5;
-  margin: 30px 0;
+/* === ERROR GENERAL ARRIBA === */
+.global-error {
+  color: #ff4f4f;
+  background: #fff5f5;
+  padding: 12px;
+  border-radius: 8px;
+  text-align: center;
+  font-weight: 600;
+  margin-bottom: 15px;
+  font-size: 0.85rem;
+  border: 2px solid #ffdddd;
 }
 
-/* Etiquetas */
+/* === LABELS === */
 label {
   display: flex;
   flex-direction: column;
-  font-size: 0.9rem;
-  color: #555;
-  margin-bottom: 15px;
-  font-weight: 500;
+  margin-bottom: 12px;
+  font-size: 0.85rem;
+  color: #333;
+  font-weight: 600;
 }
 
-/* Inputs y textarea */
+/* === INPUTS === */
 input[type="text"],
-input[type="email"],
-textarea {
-  padding: 12px;
-  border: 1px solid #e0e0e0;
-  border-radius: 8px;
-  font-size: 0.95rem;
-  margin-top: 6px;
-  transition: all 0.2s;
+input[type="email"] {
+  margin-top: 4px;
+  padding: 10px 12px;
+  border: 2px solid #e5e5e5;
+  border-radius: 6px;
   background: #fafafa;
+  font-size: 0.9rem;
+  transition: all 0.2s ease;
+  font-family: inherit;
 }
 
 input[type="text"]:focus,
-input[type="email"]:focus,
-textarea:focus {
+input[type="email"]:focus {
   outline: none;
   border-color: #333;
   background: white;
 }
 
-/* Bordes rojos en error */
-input.error,
-textarea.error {
-  border: 2px solid #ff4f4f;
+/* === INPUTS CON ERROR === */
+input.error {
+  border-color: #ff4f4f !important;
   background: #fff5f5;
 }
 
-/* Mensajes de error */
+/* === MENSAJES DE ERROR INDIVIDUAL === */
 .error-text {
   color: #ff4f4f;
-  font-size: 0.85em;
-  margin-top: 5px;
-}
-
-.global-error {
-  color: #ff4f4f;
-  font-weight: 600;
-  text-align: center;
-  margin-bottom: 20px;
-  padding: 12px;
-  background: #fff5f5;
-  border-radius: 8px;
-  font-size: 0.9rem;
-}
-
-/* Opciones de envío en columnas */
-.opciones-envio {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 12px;
-  margin-top: 10px;
-  padding: 0;
-}
-
-/* Ocultar radio buttons reales */
-.opciones-envio input[type="radio"],
-.subform input[type="radio"] {
-  display: none;
-}
-
-/* Botones de método de envío */
-.opciones-envio label {
-  margin: 0;
-  padding: 16px 12px;
-  border: 2px solid #e0e0e0;
-  border-radius: 8px;
-  text-align: center;
-  cursor: pointer;
-  transition: all 0.2s;
-  font-size: 0.9rem;
+  font-size: 0.75rem;
+  margin-top: 4px;
   font-weight: 500;
-  background: #fafafa;
-  color: #666;
 }
 
-.opciones-envio label:hover {
-  border-color: #333;
-  background: white;
-}
-
-.opciones-envio input[type="radio"]:checked+label {
-  border-color: #333;
-  background: #333;
-  color: white;
-  font-weight: 600;
-}
-
-/* Error en opciones de envío */
-.opciones-envio.error label {
-  border-color: #ff4f4f;
-}
-
-/* Subformularios */
-.subform {
-  background: #f8f8f8;
-  padding: 25px;
-  border-radius: 10px;
-  margin-top: 20px;
-  border: 1px solid #e5e5e5;
-}
-
-/* Radios de plataforma como botones */
-.subform>div {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
-
-.subform label {
-  margin: 0;
-  padding: 14px;
-  border: 2px solid #e0e0e0;
-  border-radius: 8px;
-  cursor: pointer;
-  transition: all 0.2s;
-  background: white;
-  text-align: center;
-  font-weight: 500;
-  color: #666;
-}
-
-.subform label:hover {
-  border-color: #333;
-}
-
-.subform input[type="radio"]:checked+label {
-  border-color: #333;
-  background: #333;
-  color: white;
-}
-
-/* Error en selección de plataforma */
-.subform div.error label {
-  border-color: #ff4f4f;
-}
-
-/* Botones de navegación */
+/* === BOTONES DE NAVEGACIÓN === */
 .botones {
   display: flex;
   justify-content: center;
-  gap: 15px;
-  margin-top: 35px;
+  gap: 8px;
+  margin-top: 15px;
 }
 
-button {
-  padding: 14px 32px;
+.botones button {
+  padding: 8px 16px;
   border: none;
-  border-radius: 8px;
-  font-size: 0.95rem;
+  border-radius: 6px;
+  font-size: 0.85rem;
   font-weight: 600;
   cursor: pointer;
   transition: all 0.2s;
 }
 
-button[type="button"] {
+.botones button[type="button"] {
   background: #f0f0f0;
   color: #555;
 }
 
-button[type="button"]:hover {
+.botones button[type="button"]:hover {
   background: #e0e0e0;
 }
 
-button[type="submit"] {
+.botones button[type="submit"] {
   background: #333;
   color: white;
 }
 
-button[type="submit"]:hover {
+.botones button[type="submit"]:hover:not([disabled]) {
   background: #000;
+  transform: translateY(-1px);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
 }
 
-button:disabled {
-  opacity: 0.5;
+.botones button[disabled] {
+  opacity: 0.4;
   cursor: not-allowed;
+  background: #e0e0e0;
+  color: #999;
 }
 
-/* Responsive Design */
-@media (max-width: 768px) {
-  .formulario-contacto {
-    margin: 20px;
-    padding: 25px;
+/* Animación de entrada */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
   }
 
-  .opciones-envio {
-    grid-template-columns: 1fr;
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+label {
+  animation: fadeIn 0.3s ease-out backwards;
+}
+
+label:nth-child(2) {
+  animation-delay: 0.05s;
+}
+
+label:nth-child(3) {
+  animation-delay: 0.1s;
+}
+
+label:nth-child(4) {
+  animation-delay: 0.15s;
+}
+
+label:nth-child(5) {
+  animation-delay: 0.2s;
+}
+
+/* === RESPONSIVE === */
+@media (max-width: 768px) {
+  .formulario-contacto {
+    padding: 12px;
   }
 
   .botones {
-    flex-direction: column;
+    gap: 6px;
   }
 
-  button {
-    width: 100%;
-  }
-}
-
-@media (max-width: 480px) {
-  .formulario-contacto {
-    margin: 10px;
-    padding: 20px;
-  }
-
-  h2 {
-    font-size: 0.95rem;
-  }
-
-  input[type="text"],
-  input[type="email"],
-  textarea {
-    font-size: 16px;
-    /* Previene zoom en iOS */
+  .botones button {
+    padding: 7px 14px;
+    font-size: 0.8rem;
   }
 }

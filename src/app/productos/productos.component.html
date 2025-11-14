@@ -1,25 +1,46 @@
 <section class="productos">
+  <app-progress-bar [currentStep]="1"></app-progress-bar>
+
+  <button type="button" class="btn-close" aria-label="Close" (click)="volverAlInicio()">&times;</button>
+
   <h2>PRODUCTOS</h2>
+
   <p>Elige el pack que más se adapte a ti.</p>
+
+  <button type="button" class="btn-close" aria-label="Close" (click)="volverAlInicio()"></button>
 
   <div class="productos-container">
     <div class="producto-card" *ngFor="let pack of packs" [class.seleccionado]="packSeleccionado === pack"
       (click)="seleccionarPack(pack)">
+
       <img [src]="pack.imagen" [alt]="pack.nombre" class="producto-imagen">
+
       <div class="producto-info">
         <h3>{{ pack.nombre }}</h3>
-        <p>{{ pack.descripcion }}</p>
+        <ul>
+          <li *ngFor="let item of pack.descripcion">{{ item }}</li>
+        </ul>
         <span class="precio">{{ pack.precio }} €</span>
       </div>
+
+      <!-- Opciones como botones con imagen y nombre -->
+      <div class="opciones-botones" *ngIf="packSeleccionado === pack">
+        <button *ngFor="let opcion of pack.opciones" [class.seleccionada]="opcionSeleccionada === opcion"
+          (click)="seleccionarOpcion(opcion); $event.stopPropagation()">
+          <img [src]="opcion.imagen" [alt]="opcion.nombre">
+          <span>{{ opcion.nombre }}</span>
+        </button>
+      </div>
+
+
     </div>
   </div>
 
   <div class="actions">
     <button (click)="volver()">Volver</button>
-    <button (click)="siguiente()" [disabled]="!packSeleccionado">
+    <button (click)="siguiente()" [disabled]="!packSeleccionado || !opcionSeleccionada">
       Siguiente
     </button>
   </div>
 
-  <app-progress-bar [currentStep]="1"></app-progress-bar>
 </section>
