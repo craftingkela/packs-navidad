@@ -1,7 +1,28 @@
-<section class="landing">
-  <h1>Bienvenid a Packs Navidad</h1>
-  <p>Texto de presentación corto...</p>
+<section class="home-hero">
 
-  <!-- CTA: usa routerLink para añadir al historial -->
-  <button (click)="irAProductos()" class="btn-cta">Ver Packs</button>
+  <!-- Fondo decorativo con copos -->
+  <div class="snowflakes" aria-hidden="true">
+    <div class="snowflake">❄</div>
+    <div class="snowflake">❄</div>
+    <div class="snowflake">❄</div>
+    <div class="snowflake">❄</div>
+    <div class="snowflake">❄</div>
+    <div class="snowflake">❄</div>
+  </div>
+
+  <!-- Texto principal -->
+  <div class="hero-text">
+    <h1>Acierta con tus regalos de Navidad</h1>
+    <p>Descubre packs únicos y personalizados que encantarán a tus seres queridos.</p>
+    <p>Esta NO es unapágina de compra. Su finalidad es facilitar el encargo de los productos y poder contactar con
+      todos. <br> Si tienes cualquier duda puedes contactarme por mis Redes sociales craftingkela o mandarme un correo a
+      crafting.kela. </p>
+    <button (click)="irAPacks()">Elige tu próximo regalo</button>
+  </div>
+
+  <!-- Imagen decorativa / banner -->
+  <div class="hero-image">
+    <img src="assets/tu-imagen.png" alt="Packs de Navidad" />
+  </div>
+
 </section>

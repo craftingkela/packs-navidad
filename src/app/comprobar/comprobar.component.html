@@ -19,7 +19,9 @@
   <h3>Datos de contacto</h3>
   <div *ngIf="contacto">
     <p>Nombre: {{ contacto.nombre }} {{ contacto.apellido }}</p>
-    <p>Correo o teléfono: {{ contacto.contacto }}</p>
+
+    <p>Correo: {{ contacto.correo }}</p>
+    <p>teléfono: {{ contacto.telefono }}</p>
 
     <h3>Método de envío:</h3>
     <p *ngIf="contacto.metodoEnvio === 'mano'">

@@ -1,119 +1,97 @@
-<app-progress-bar [currentStep]="3"></app-progress-bar>
+<form class="formulario-contacto" #contactoForm="ngForm" (ngSubmit)="siguiente(contactoForm)">
 
-<h2>Datos de contacto</h2>
+  <!-- Mensaje global -->
+  <div class="error-text global-error" *ngIf="mostrarErrores && contactoForm.invalid">
+    Rellena los campos obligatorios para continuar
+  </div>
 
-<form class="formulario-contacto">
   <label>
     Nombre*:
-    <input type="text" [(ngModel)]="nombre" name="nombre" [class.error]="nombre === '' && mostrarErrores" />
-    <div class="error-text" *ngIf="nombre === '' && mostrarErrores">
-      Rellena el campo obligatorio
-    </div>
+    <input type="text" [(ngModel)]="nombre" name="nombre" #nombreInput="ngModel" required
+      [class.error]="nombreInput.invalid && mostrarErrores" />
   </label>
 
   <label>
     Apellido*:
-    <input type="text" [(ngModel)]="apellido" name="apellido" [class.error]="apellido === '' && mostrarErrores" />
-    <div class="error-text" *ngIf="apellido === '' && mostrarErrores">
-      Rellena el campo obligatorio
-    </div>
+    <input type="text" [(ngModel)]="apellido" name="apellido" #apellidoInput="ngModel" required
+      [class.error]="apellidoInput.invalid && mostrarErrores" />
   </label>
 
   <label>
     Correo*:
-    <input type="email" [(ngModel)]="correo" name="correo" [class.error]="correo === '' && mostrarErrores" />
-    <div class="error-text" *ngIf="correo === '' && mostrarErrores">
-      Rellena el campo obligatorio
-    </div>
+    <input type="email" [(ngModel)]="correo" name="correo" #correoInput="ngModel" required
+      [class.error]="correoInput.invalid && mostrarErrores" />
   </label>
 
   <label>
     Teléfono:
     <input type="text" [(ngModel)]="telefono" name="telefono" />
   </label>
+
+  <hr />
+
+  <h2>Método de envío*</h2>
+  <div class="opciones-envio" [class.error]="!metodoEnvio && mostrarErrores">
+    <label>
+      <input type="radio" name="envio" value="mano" [(ngModel)]="metodoEnvio" /> Entrega en mano
+    </label>
+    <label>
+      <input type="radio" name="envio" value="correos" [(ngModel)]="metodoEnvio" /> Entrega por Correos
+    </label>
+    <label>
+      <input type="radio" name="envio" value="plataforma" [(ngModel)]="metodoEnvio" /> Entrega por plataforma
+    </label>
+  </div>
+
+  <!-- Subformularios según método de envío -->
+  <div *ngIf="metodoEnvio === 'mano'" class="subform">
+    <label>
+      Ciudad*:
+      <input type="text" [(ngModel)]="ciudadEntrega" name="ciudadEntrega" #ciudadEntregaInput="ngModel" required
+        [class.error]="ciudadEntregaInput.invalid && mostrarErrores" />
+    </label>
+  </div>
+
+  <div *ngIf="metodoEnvio === 'correos'" class="subform">
+    <label>
+      Calle*:
+      <input type="text" [(ngModel)]="direccion.calle" name="calle" #calleInput="ngModel" required
+        [class.error]="calleInput.invalid && mostrarErrores" />
+    </label>
+    <label>
+      Número*:
+      <input type="text" [(ngModel)]="direccion.numero" name="numero" #numeroInput="ngModel" required
+        [class.error]="numeroInput.invalid && mostrarErrores" />
+    </label>
+    <label>
+      Código postal*:
+      <input type="text" [(ngModel)]="direccion.cp" name="cp" #cpInput="ngModel" required
+        [class.error]="cpInput.invalid && mostrarErrores" />
+    </label>
+    <label>
+      Ciudad*:
+      <input type="text" [(ngModel)]="direccion.ciudad" name="ciudad" #ciudadInput="ngModel" required
+        [class.error]="ciudadInput.invalid && mostrarErrores" />
+    </label>
+  </div>
+
+  <div *ngIf="metodoEnvio === 'plataforma'" class="subform">
+    <div [class.error]="!plataforma && mostrarErrores">
+      <label>
+        <input type="radio" name="plataforma" value="wallapop" [(ngModel)]="plataforma" /> Wallapop
+      </label>
+      <label>
+        <input type="radio" name="plataforma" value="vinted" [(ngModel)]="plataforma" /> Vinted
+      </label>
+      <label>
+        <input type="radio" name="plataforma" value="etsy" [(ngModel)]="plataforma" /> Etsy
+      </label>
+    </div>
+  </div>
+
+  <div class="botones">
+    <button type="button" (click)="atras()">Atrás</button>
+    <button type="submit">Siguiente</button>
+  </div>
+  <app-progress-bar [currentStep]="3"></app-progress-bar>
 </form>
-
-<hr />
-
-<h2>Método de envío*</h2>
-<div class="opciones-envio" [class.error]="!metodoEnvio && mostrarErrores">
-  <label>
-    <input type="radio" name="envio" value="mano" [(ngModel)]="metodoEnvio" /> Entrega en mano
-  </label>
-  <label>
-    <input type="radio" name="envio" value="correos" [(ngModel)]="metodoEnvio" /> Entrega por Correos
-  </label>
-  <label>
-    <input type="radio" name="envio" value="plataforma" [(ngModel)]="metodoEnvio" /> Entrega por plataforma de ventas
-  </label>
-  <div class="error-text" *ngIf="!metodoEnvio && mostrarErrores">
-    Selecciona una opción de envío
-  </div>
-</div>
-
-
-
-
-<!-- Formulario condicional según envío -->
-<div *ngIf="metodoEnvio === 'mano'" class="subform">
-  <h3>Entrega en mano</h3>
-  <label>
-    Ciudad*:
-    <input type="text" [(ngModel)]="ciudadEntrega" name="ciudadEntrega" required
-      [class.error]="ciudadEntrega === '' && mostrarErrores" />
-  </label>
-
-  <label>
-    Anotaciones extra:
-    <textarea [(ngModel)]="anotaciones" name="anotaciones"></textarea>
-  </label>
-</div>
-
-<div *ngIf="metodoEnvio === 'correos'" class="subform">
-  <h3>Entrega por Correos</h3>
-  <label>
-    Calle*:
-    <input type="text" [(ngModel)]="direccion.calle" name="calle" required
-      [class.error]="direccion.calle === '' && mostrarErrores" />
-  </label>
-  <label>
-    Número*:
-    <input type="text" [(ngModel)]="direccion.numero" name="numero" required
-      [class.error]="direccion.numero === '' && mostrarErrores" />
-  </label>
-  <label>
-    Puerta*:
-    <input type="text" [(ngModel)]="direccion.puerta" name="puerta" />
-  </label>
-  <label>
-    Código postal*:
-    <input type="text" [(ngModel)]="direccion.cp" name="cp" required
-      [class.error]="direccion.cp === '' && mostrarErrores" />
-  </label>
-  <label>
-    Ciudad*:
-    <input type="text" [(ngModel)]="direccion.ciudad" name="ciudad" required
-      [class.error]="direccion.ciudad === '' && mostrarErrores" />
-  </label>
-</div>
-
-<div *ngIf="metodoEnvio === 'plataforma'" class="subform">
-  <div [class.error]="!plataforma && mostrarErrores">
-    <label>
-      <input type="radio" name="plataforma" value="wallapop" [(ngModel)]="plataforma" /> Wallapop
-    </label>
-    <label>
-      <input type="radio" name="plataforma" value="vinted" [(ngModel)]="plataforma" /> Vinted
-    </label>
-    <label>
-      <input type="radio" name="plataforma" value="etsy" [(ngModel)]="plataforma" /> Etsy
-    </label>
-  </div>
-</div>
-
-<hr />
-
-<div class="botones">
-  <button (click)="atras()">Atrás</button>
-  <button [disabled]="!puedeContinuar" (click)="siguiente()">Siguiente</button>
-</div>

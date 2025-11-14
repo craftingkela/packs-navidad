@@ -13,14 +13,14 @@ import { PedidoService } from '../services/pedido.service';
 })
 export class TelasComponent implements OnInit {
   telas = [
-    { nombre: 'Tela de prueba', imagen: 'assets/rojo.jpg' },
-    { nombre: 'Tela verde con renos', imagen: 'assets/verde.jpg' },
-    { nombre: 'Tela blanca con copos', imagen: 'assets/telas/blanco.jpg' },
-    { nombre: 'Tela azul con estrellas', imagen: 'assets/telas/azul.jpg' },
-    { nombre: 'Tela dorada brillante', imagen: 'assets/telas/amarillo.jpg' },
-    { nombre: 'Tela plateada con lunares', imagen: 'assets/telas/gris.jpg' },
-    { nombre: 'Tela roja con bastones', imagen: 'assets/telas/lila.jpg' },
-    { nombre: 'Tela verde con hojas', imagen: 'assets/telas/rosa.jpg' }
+    { nombre: 'Bruma roja', imagen: 'assets/rojo.jpg' },
+    { nombre: 'Verde musgo', imagen: 'assets/verde.jpg' },
+    { nombre: 'Blanco nieve', imagen: 'assets/blanco.jpg' },
+    { nombre: 'Flores azules', imagen: 'assets/azul.jpg' },
+    { nombre: 'Vichy amarillo', imagen: 'assets/amarillo.jpg' },
+    { nombre: 'Gris Saeris', imagen: 'assets/gris.jpg' },
+    { nombre: 'Vichy lila', imagen: 'assets/lila.jpg' },
+    { nombre: 'Rosa con lunares', imagen: 'assets/rosa.jpg' }
   ];
   telaExterior: any = null;
   telaForro: any = null;

@@ -16,7 +16,7 @@ export class ProductosComponent {
   packs = [
     {
       nombre: 'Pack Bookworm',
-      descripcion: 'Una funda para libros de cualquier tamaño, acolchada y con cierre de botón o lazo. Un marcapáginas y portabolis a juego',
+      descripcion: 'Una funda para libros con cierre de botón. Un marcapáginas y portabolis a juego',
       precio: 20,
       imagen: 'assets/packs/basico.jpg'
     },

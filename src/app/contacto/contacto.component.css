@@ -1,76 +1,250 @@
-form,
-.opciones-envio,
-.subform {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  max-width: 400px;
-  margin: 10px auto;
+/* Container principal */
+.formulario-contacto {
+  max-width: 600px;
+
+  padding: 40px;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
 }
 
+/* Títulos */
+h2 {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #333;
+  margin: 20px 0 15px 0;
+}
+
+/* Separador */
+hr {
+  border: none;
+  border-top: 1px solid #e5e5e5;
+  margin: 30px 0;
+}
+
+/* Etiquetas */
 label {
   display: flex;
   flex-direction: column;
   font-size: 0.9rem;
-}
-
-input[type="text"],
-textarea {
-  padding: 6px;
-  border: 1px solid #ccc;
-  border-radius: 6px;
-}
-
-.opciones-envio {
-  gap: 8px;
-}
-
-.subform {
-  background: #f8f8f8;
-  padding: 15px;
-  border-radius: 8px;
-}
-
-.botones {
-  display: flex;
-  justify-content: center;
-  gap: 12px;
-  margin-top: 20px;
-}
-
-button {
-  padding: 8px 16px;
-  border: none;
-  border-radius: 6px;
-  background-color: #ff4f4f;
-  color: white;
-  cursor: pointer;
+  color: #555;
+  margin-bottom: 15px;
   font-weight: 500;
 }
 
-button:hover {
-  background-color: #e04040;
+/* Inputs y textarea */
+input[type="text"],
+input[type="email"],
+textarea {
+  padding: 12px;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  margin-top: 6px;
+  transition: all 0.2s;
+  background: #fafafa;
 }
 
+input[type="text"]:focus,
+input[type="email"]:focus,
+textarea:focus {
+  outline: none;
+  border-color: #333;
+  background: white;
+}
+
+/* Bordes rojos en error */
 input.error,
 textarea.error {
-  border: 2px solid red;
+  border: 2px solid #ff4f4f;
+  background: #fff5f5;
 }
 
-input.error,
-textarea.error {
-  border: 2px solid red;
-}
-
+/* Mensajes de error */
 .error-text {
-  color: red;
-  font-size: 0.9em;
-  margin-top: 2px;
-  margin-bottom: 5px;
+  color: #ff4f4f;
+  font-size: 0.85em;
+  margin-top: 5px;
 }
 
-.opciones-envio.error {
-  border: 2px solid red;
-  padding: 5px;
-  margin-bottom: 5px;
+.global-error {
+  color: #ff4f4f;
+  font-weight: 600;
+  text-align: center;
+  margin-bottom: 20px;
+  padding: 12px;
+  background: #fff5f5;
+  border-radius: 8px;
+  font-size: 0.9rem;
+}
+
+/* Opciones de envío en columnas */
+.opciones-envio {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+  margin-top: 10px;
+  padding: 0;
+}
+
+/* Ocultar radio buttons reales */
+.opciones-envio input[type="radio"],
+.subform input[type="radio"] {
+  display: none;
+}
+
+/* Botones de método de envío */
+.opciones-envio label {
+  margin: 0;
+  padding: 16px 12px;
+  border: 2px solid #e0e0e0;
+  border-radius: 8px;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.2s;
+  font-size: 0.9rem;
+  font-weight: 500;
+  background: #fafafa;
+  color: #666;
+}
+
+.opciones-envio label:hover {
+  border-color: #333;
+  background: white;
+}
+
+.opciones-envio input[type="radio"]:checked+label {
+  border-color: #333;
+  background: #333;
+  color: white;
+  font-weight: 600;
+}
+
+/* Error en opciones de envío */
+.opciones-envio.error label {
+  border-color: #ff4f4f;
+}
+
+/* Subformularios */
+.subform {
+  background: #f8f8f8;
+  padding: 25px;
+  border-radius: 10px;
+  margin-top: 20px;
+  border: 1px solid #e5e5e5;
+}
+
+/* Radios de plataforma como botones */
+.subform>div {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.subform label {
+  margin: 0;
+  padding: 14px;
+  border: 2px solid #e0e0e0;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s;
+  background: white;
+  text-align: center;
+  font-weight: 500;
+  color: #666;
+}
+
+.subform label:hover {
+  border-color: #333;
+}
+
+.subform input[type="radio"]:checked+label {
+  border-color: #333;
+  background: #333;
+  color: white;
+}
+
+/* Error en selección de plataforma */
+.subform div.error label {
+  border-color: #ff4f4f;
+}
+
+/* Botones de navegación */
+.botones {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin-top: 35px;
+}
+
+button {
+  padding: 14px 32px;
+  border: none;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+button[type="button"] {
+  background: #f0f0f0;
+  color: #555;
+}
+
+button[type="button"]:hover {
+  background: #e0e0e0;
+}
+
+button[type="submit"] {
+  background: #333;
+  color: white;
+}
+
+button[type="submit"]:hover {
+  background: #000;
+}
+
+button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .formulario-contacto {
+    margin: 20px;
+    padding: 25px;
+  }
+
+  .opciones-envio {
+    grid-template-columns: 1fr;
+  }
+
+  .botones {
+    flex-direction: column;
+  }
+
+  button {
+    width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .formulario-contacto {
+    margin: 10px;
+    padding: 20px;
+  }
+
+  h2 {
+    font-size: 0.95rem;
+  }
+
+  input[type="text"],
+  input[type="email"],
+  textarea {
+    font-size: 16px;
+    /* Previene zoom en iOS */
+  }
 }

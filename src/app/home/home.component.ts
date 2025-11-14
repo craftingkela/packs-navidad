@@ -1,15 +1,18 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-home',
-  templateUrl: './home.component.html'
+  standalone: true,
+  imports: [CommonModule],
+  templateUrl: './home.component.html',
+  styleUrls: ['./home.component.css']
 })
 export class HomeComponent {
   constructor(private router: Router) { }
 
-  irAProductos() {
-    // navega a /productos y añade entrada en historial
-    this.router.navigate(['/productos']);
+  irAPacks() {
+    this.router.navigate(['/productos']); // Ajusta la ruta según tu SPA
   }
 }

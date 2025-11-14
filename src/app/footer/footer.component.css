@@ -1,0 +1,34 @@
+.footer {
+  background-color: #dbd7bd;
+  padding: 20px 0;
+  text-align: center;
+  font-family: 'Arial', sans-serif;
+}
+
+.footer-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+}
+
+.rrss {
+  display: flex;
+  gap: 15px;
+}
+
+.rrss a img {
+  width: 30px;
+  height: 30px;
+  transition: transform 0.2s, opacity 0.2s;
+}
+
+.rrss a img:hover {
+
+  opacity: 0.8;
+}
+
+.footer-text {
+  font-size: 0.9rem;
+  color: #333;
+}

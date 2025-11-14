@@ -1,0 +1,126 @@
+/* Hero principal */
+.home-hero {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 60px 20px;
+  gap: 30px;
+
+  /* Degradado cálido navideño */
+  overflow: hidden;
+}
+
+/* Copos de nieve animados */
+.snowflakes {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+.snowflake {
+  position: absolute;
+  color: #fff;
+  font-size: 1.2rem;
+  top: -10px;
+  animation: fall 10s linear infinite;
+}
+
+.snowflake:nth-child(1) {
+  left: 10%;
+  animation-duration: 8s;
+}
+
+.snowflake:nth-child(2) {
+  left: 25%;
+  animation-duration: 12s;
+}
+
+.snowflake:nth-child(3) {
+  left: 40%;
+  animation-duration: 10s;
+}
+
+.snowflake:nth-child(4) {
+  left: 55%;
+  animation-duration: 14s;
+}
+
+.snowflake:nth-child(5) {
+  left: 70%;
+  animation-duration: 9s;
+}
+
+.snowflake:nth-child(6) {
+  left: 85%;
+  animation-duration: 11s;
+}
+
+@keyframes fall {
+  0% {
+    transform: translateY(0) rotate(0deg);
+    opacity: 1;
+  }
+
+  100% {
+    transform: translateY(100vh) rotate(360deg);
+    opacity: 0;
+  }
+}
+
+/* Texto y CTA */
+.hero-text h1 {
+  font-size: 2.8rem;
+  color: #b40000;
+  /* Rojo navideño */
+  margin-bottom: 15px;
+}
+
+.hero-text p {
+  font-size: 1.2rem;
+  color: #333;
+  margin-bottom: 25px;
+}
+
+.hero-text button {
+  padding: 12px 25px;
+  font-size: 1rem;
+  background-color: #ff4f4f;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.hero-text button:hover {
+  background-color: #e04040;
+}
+
+/* Imagen decorativa */
+.hero-image img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 12px;
+}
+
+/* Responsive */
+@media (min-width: 768px) {
+  .home-hero {
+    flex-direction: row;
+    justify-content: space-around;
+    text-align: left;
+  }
+
+  .hero-text {
+    max-width: 500px;
+  }
+
+  .hero-image img {
+    max-width: 500px;
+  }
+}
